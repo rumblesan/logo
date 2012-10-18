@@ -1,4 +1,4 @@
-name := "penrose"
+name := "logo"
 
 organization := "com.rumblesan"
 
@@ -10,7 +10,7 @@ libraryDependencies ++= Seq(
   "org.specs2" %% "specs2" % "1.12" % "test"
 )
 
-initialCommands := "import com.rumblesan.penrose._"
+initialCommands := "import com.rumblesan.logo._"
 
 fork in run := true
 

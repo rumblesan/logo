@@ -2,17 +2,17 @@ import processing.core._
 import spde.core._
 import PConstants._
 
-import com.rumblesan.turtle._
+import com.rumblesan.logo.turtle._
 
-object StraightScalaRunner {
+object Main {
   def main(args: Array[String]) = {
     PApplet.main(
-      Array("Penrose")
+      Array("Logo")
     )
   }
 }
 
-class Penrose extends PApplet {
+class Logo extends PApplet {
 
   override def setup {
     size(1024, 768)

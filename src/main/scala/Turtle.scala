@@ -1,4 +1,4 @@
-package com.rumblesan.turtle
+package com.rumblesan.logo.turtle
 
 import processing.core._
 
