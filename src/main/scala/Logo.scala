@@ -26,7 +26,7 @@ class Logo extends PApplet {
 
   override def draw {
 
-    val turtle = new Turtle(width / 2, height / 2, 0.0f, this)
+    val turtle = new Turtle(width / 2, height / 2, 0.0, this)
 
     turtle.move(20).turn(10).move(20).turn(30).move(40)
 
