@@ -3,6 +3,7 @@ import spde.core._
 import PConstants._
 
 import com.rumblesan.logo.turtle._
+import com.rumblesan.lsystem._
 
 object Main {
   def main(args: Array[String]) = {
@@ -14,22 +15,33 @@ object Main {
 
 class Logo extends PApplet {
 
+  var ls: LSystem = _
+
+  val dc = new DragonCurve(10.0)
+
   override def setup {
     size(1024, 768)
     smooth()
     frameRate(30)
 
-    background(0)
-    stroke(255)
+    ls = new LSystem("FX".toList, DragonCurve.rules)
 
   }
 
   override def draw {
 
-    val turtle = new Turtle(width / 2, height / 2, 0.0, this)
+    background(0)
+    stroke(255)
 
-    turtle.move(20).turn(10).move(20).turn(30).move(40)
+    val turtle = new Turtle(width * 0.75, height * 0.75, 0.0, this)
 
+    dc.parse(ls, turtle)
+
+  }
+
+  override def mouseClicked() {
+    ls = ls.nextGeneration()
+    println(ls.chars)
   }
 
 }
