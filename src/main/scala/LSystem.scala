@@ -15,13 +15,13 @@ class LSystemRules(charSubs: List[LSystemSubstitution]) {
 
 }
 
-class LSystem(seed: List[Char], lRules: List[LSystemSubstitution]) {
+class LSystem(seed: List[Char], lRules: LSystemRules) {
 
   val chars = seed
 
   val rules = lRules
 
-  def processChars(chars: List[Char], rules: List[LSystemSubstitution]): List[Char] = {
+  def processChars(chars: List[Char], rules: LSystemRules): List[Char] = {
 
     chars.foldLeft(List.empty[Char])(
       (output, char) => {
@@ -31,8 +31,8 @@ class LSystem(seed: List[Char], lRules: List[LSystemSubstitution]) {
 
   }
 
-  def subChar(c: Char, rules: List[LSystemSubstitution]): List[Char] = {
-    val fittingRules = rules.filter(_.char == c)
+  def subChar(c: Char, rules: LSystemRules): List[Char] = {
+    val fittingRules = rules.substitutions.filter(_.char == c)
     if (fittingRules.isEmpty) {
       c :: Nil
     } else {
