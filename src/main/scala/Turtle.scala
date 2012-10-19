@@ -10,12 +10,24 @@ object Turtle {
 
 }
 
-class Turtle(xStart: Double, yStart: Double, headAngle: Double, pApplet: PApplet) {
+case class StackInfo(x: Double, y: Double, heading: Double)
+
+class Turtle(xVal: Double, yVal: Double, headAngle: Double, stateStack: List[StackInfo], pApplet: PApplet) {
 
   import Turtle._
 
-  val x = xStart
-  val y = yStart
+  def this(xVal: Double, yVal: Double, headAngle: Double, pApplet: PApplet) = {
+    this(xVal, yVal, headAngle, Nil, pApplet)
+  }
+
+  def this(xVal: Double, yVal: Double, pApplet: PApplet) = {
+    this(xVal, yVal, 0.0, Nil, pApplet)
+  }
+
+  val x = xVal
+  val y = yVal
+
+  val stack = stateStack
 
   // radians
   val heading = headAngle
@@ -35,14 +47,28 @@ class Turtle(xStart: Double, yStart: Double, headAngle: Double, pApplet: PApplet
 
     pa.line(x, y, x2, y2)
 
-    new Turtle(x2, y2, heading, pa)
+    new Turtle(x2, y2, heading, stack, pa)
   }
 
   def turn(angle: Double): Turtle = {
     val rads = deg2Rad(angle) + heading
-    new Turtle(x, y, rads, pa)
+    new Turtle(x, y, rads, stack, pa)
   }
-  
+
+  def pushPos(): Turtle = {
+    val newStack = StackInfo(x, y, heading) :: stack
+    new Turtle(x, y, heading, newStack, pa)
+  }
+
+  def popPos(): Turtle = {
+    if (stack.isEmpty) {
+      new Turtle(x, y, heading, pa)
+    } else {
+      val newStack = stack.tail
+      val newPos = stack.head
+      new Turtle(newPos.x, newPos.y, newPos.heading, newStack, pa)
+    }
+  }
 
 }
 
