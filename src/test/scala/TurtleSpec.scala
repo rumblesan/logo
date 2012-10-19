@@ -1,11 +1,10 @@
-package com.rumblesan.penrose
+package com.rumblesan.logo.turtle
 
 import org.specs2.mutable._
 import org.mockito.Mockito._
 
 import processing.core.PApplet
 import scala.math.Pi
-import com.rumblesan.logo.turtle.Turtle
 
 class TurtleSpec extends Specification {
 
