@@ -20,22 +20,6 @@ class LSystemSpec extends Specification {
       new LSystem("A", rules) must haveClass[LSystem]
     }
 
-    "return a List with the transformed char when it has a corresponding substitution rule" in {
-      val rules = new LSystemRules().addSub('A', "B")
-      val ls = new LSystem("", new LSystemRules())
-      ls.subChar('A', rules) must_== "B"
-    }
-    "return a List with the unchanged char when it has does not have a corresponding substitution rule" in {
-      val rules = new LSystemRules().addSub('B', "B")
-      val ls = new LSystem("", new LSystemRules(Nil))
-      ls.subChar('A', rules) must_== "A"
-    }
-    "return a List with the unchanged char when it has no substitution rules" in {
-      val rules = new LSystemRules()
-      val ls = new LSystem("", new LSystemRules())
-      ls.subChar('A', rules) must_== "A"
-    }
-
     "correctly process a string of characters using the provided rules" in {
       val rules = new LSystemRules().addSub('A', "B")
                                     .addSub('B', "AB")

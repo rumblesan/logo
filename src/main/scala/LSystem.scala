@@ -21,6 +21,10 @@ class LSystemRules(charSubs: List[LSystemSubstitution]) {
     new LSystemRules(newRule :: charSubs)
   }
 
+  def getSub(c: Char): String = {
+    lookup.getOrElse(c, c.toString)
+  }
+
 }
 
 class LSystem(seed: String, lRules: LSystemRules) {
@@ -33,14 +37,10 @@ class LSystem(seed: String, lRules: LSystemRules) {
 
     chars.toList.foldLeft("")(
       (output, char) => {
-        output + subChar(char, rules)
+        output + rules.getSub(char)
       }
     )
 
-  }
-
-  def subChar(c: Char, rules: LSystemRules): String = {
-    rules.lookup.getOrElse(c, c.toString)
   }
 
   def nextGeneration(): LSystem = {

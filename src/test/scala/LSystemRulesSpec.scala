@@ -27,9 +27,18 @@ class LSystemRulesSpec extends Specification {
       newLsr.substitutions.head must_== lSub
     }
 
-
-
-
+    "return a String from getSub method with the transformed chars when it has a corresponding substitution rule" in {
+      val rules = new LSystemRules().addSub('A', "B")
+      rules.getSub('A') must_== "B"
+    }
+    "return a String from getSub method with the unchanged char when it has does not have a corresponding substitution rule" in {
+      val rules = new LSystemRules().addSub('B', "B")
+      rules.getSub('A') must_== "A"
+    }
+    "return a String from getSub method with the unchanged char when it has no substitution rules" in {
+      val rules = new LSystemRules()
+      rules.getSub('A') must_== "A"
+    }
   }
 
 
