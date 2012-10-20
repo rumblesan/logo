@@ -16,14 +16,14 @@ class LSystemRulesSpec extends Specification {
 
     "return a new object when the addSub method is called" in {
       val lsr = new LSystemRules()
-      val newLsr = lsr.addSub('A', "B".toList)
+      val newLsr = lsr.addSub('A', "B")
       newLsr must haveClass[LSystemRules]
     }
 
     "return a new object with the added sub when the addSub method is called" in {
       val lsr = new LSystemRules()
-      val newLsr = lsr.addSub('A', "B".toList)
-      val lSub = LSystemSubstitution('A', "B".toList)
+      val newLsr = lsr.addSub('A', "B")
+      val lSub = LSystemSubstitution('A', "B")
       newLsr.substitutions.head must_== lSub
     }
 

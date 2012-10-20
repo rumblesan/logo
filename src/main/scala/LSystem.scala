@@ -1,43 +1,46 @@
 package com.rumblesan.lsystem
 
-case class LSystemSubstitution(char: Char, subs: List[Char])
+case class LSystemSubstitution(char: Char, subs: String)
 
 class LSystemRules(charSubs: List[LSystemSubstitution]) {
 
   val substitutions = charSubs
 
+  val lookup = {
+    charSubs.foldLeft(Map.empty[Char, String])(
+      (map, rule) => {
+        map + (rule.char -> rule.subs.toString)
+      }
+    )
+  }
+
   def this() = this(Nil)
 
-  def addSub(char: Char, subs: List[Char]):LSystemRules = {
+  def addSub(char: Char, subs: String):LSystemRules = {
     val newRule = LSystemSubstitution(char, subs)
     new LSystemRules(newRule :: charSubs)
   }
 
 }
 
-class LSystem(seed: List[Char], lRules: LSystemRules) {
+class LSystem(seed: String, lRules: LSystemRules) {
 
   val chars = seed
 
   val rules = lRules
 
-  def processChars(chars: List[Char], rules: LSystemRules): List[Char] = {
+  def processChars(chars: String, rules: LSystemRules): String = {
 
-    chars.foldLeft(List.empty[Char])(
+    chars.toList.foldLeft("")(
       (output, char) => {
-        output ::: subChar(char, rules)
+        output + subChar(char, rules)
       }
     )
 
   }
 
-  def subChar(c: Char, rules: LSystemRules): List[Char] = {
-    val fittingRules = rules.substitutions.filter(_.char == c)
-    if (fittingRules.isEmpty) {
-      c :: Nil
-    } else {
-      fittingRules.head.subs
-    }
+  def subChar(c: Char, rules: LSystemRules): String = {
+    rules.lookup.getOrElse(c, c.toString)
   }
 
   def nextGeneration(): LSystem = {
