@@ -17,14 +17,16 @@ class Logo extends PApplet {
 
   var ls: LSystem = _
 
-  val st = new SierpinskiTriangle(5.0)
+  val lineSize = 5.0
+
+  val system = FractalPlant
 
   override def setup {
     size(1024, 768)
     smooth()
     frameRate(30)
 
-    ls = new LSystem(SierpinskiTriangle.seed, SierpinskiTriangle.rules)
+    ls = new LSystem(system.seed, system.rules)
 
   }
 
@@ -33,9 +35,9 @@ class Logo extends PApplet {
     background(0)
     stroke(255)
 
-    val turtle = new Turtle(width * 0.15, height * 0.85, 90.0, this)
+    val turtle = new Turtle(width * 0.05, height * 0.85, system.startAngle, this)
 
-    st.parse(ls, turtle)
+    system(lineSize).parse(ls, turtle)
 
   }
 

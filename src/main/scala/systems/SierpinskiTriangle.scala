@@ -7,9 +7,16 @@ object SierpinskiTriangle {
   val rules  = new LSystemRules().addSub('A', "B-A-B")
                                  .addSub('B', "A+B+A")
 
+  val startAngle = 90.0
+
   val angle = 60.0
 
   val seed = "A"
+
+  def apply(distance: Double) = {
+    new SierpinskiTriangle(distance)
+  }
+
 }
 
 class SierpinskiTriangle(distance: Double) {

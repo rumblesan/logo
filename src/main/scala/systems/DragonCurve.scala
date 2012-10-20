@@ -7,9 +7,15 @@ object DragonCurve {
   val rules  = new LSystemRules().addSub('X', "X+YF")
                                  .addSub('Y', "FX-Y")
 
+  val startAngle = 0
+
   val angle = 90.0
 
   val seed = "FX"
+
+  def apply(distance: Double) = {
+    new DragonCurve(distance)
+  }
 
 }
 
