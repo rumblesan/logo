@@ -1,28 +1,17 @@
 package com.rumblesan.lsystem
 
-case class LSystemSubstitution(char: Char, subs: String)
-
-class LSystemRules(charSubs: List[LSystemSubstitution]) {
+class LSystemRules(charSubs: Map[Char, String]) {
 
   val substitutions = charSubs
 
-  val lookup = {
-    charSubs.foldLeft(Map.empty[Char, String])(
-      (map, rule) => {
-        map + (rule.char -> rule.subs.toString)
-      }
-    )
-  }
-
-  def this() = this(Nil)
+  def this() = this(Map.empty[Char, String])
 
   def addSub(char: Char, subs: String):LSystemRules = {
-    val newRule = LSystemSubstitution(char, subs)
-    new LSystemRules(newRule :: charSubs)
+    new LSystemRules(substitutions + (char -> subs))
   }
 
   def getSub(c: Char): String = {
-    lookup.getOrElse(c, c.toString)
+    substitutions.getOrElse(c, c.toString)
   }
 
 }

@@ -11,7 +11,7 @@ class LSystemRulesSpec extends Specification {
       new LSystemRules() must haveClass[LSystemRules]
     }
     "be created fine with the list constructor" in {
-      new LSystemRules(Nil) must haveClass[LSystemRules]
+      new LSystemRules(Map.empty[Char, String]) must haveClass[LSystemRules]
     }
 
     "return a new object when the addSub method is called" in {
@@ -23,8 +23,8 @@ class LSystemRulesSpec extends Specification {
     "return a new object with the added sub when the addSub method is called" in {
       val lsr = new LSystemRules()
       val newLsr = lsr.addSub('A', "B")
-      val lSub = LSystemSubstitution('A', "B")
-      newLsr.substitutions.head must_== lSub
+      val lSub = Map('A' -> "B")
+      newLsr.substitutions must_== lSub
     }
 
     "return a String from getSub method with the transformed chars when it has a corresponding substitution rule" in {
