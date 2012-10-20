@@ -4,8 +4,8 @@ import com.rumblesan.logo.turtle._
 
 object SierpinskiTriangle {
 
-  val rules  = new LSystemRules().addSub('A', "B-A-B".toList)
-                                 .addSub('B', "A+B+A".toList)
+  val rules  = new LSystemRules().addSub('A', "B-A-B")
+                                 .addSub('B', "A+B+A")
 
   val angle = 60.0
 }

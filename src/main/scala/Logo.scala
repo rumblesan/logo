@@ -24,7 +24,7 @@ class Logo extends PApplet {
     smooth()
     frameRate(30)
 
-    ls = new LSystem("A".toList, SierpinskiTriangle.rules)
+    ls = new LSystem("A", SierpinskiTriangle.rules)
 
   }
 
