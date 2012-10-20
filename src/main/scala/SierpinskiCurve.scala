@@ -8,6 +8,8 @@ object SierpinskiTriangle {
                                  .addSub('B', "A+B+A")
 
   val angle = 60.0
+
+  val seed = "A"
 }
 
 class SierpinskiTriangle(distance: Double) {

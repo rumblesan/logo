@@ -8,6 +8,9 @@ object DragonCurve {
                                  .addSub('Y', "FX-Y")
 
   val angle = 90.0
+
+  val seed = "FX"
+
 }
 
 class DragonCurve(distance: Double) {
