@@ -29,7 +29,6 @@ class Turtle(xVal: Double, yVal: Double, headAngle: Double, stateStack: List[Sta
 
   val stack = stateStack
 
-  // radians
   val heading = headAngle
 
   val pa = pApplet
@@ -39,8 +38,8 @@ class Turtle(xVal: Double, yVal: Double, headAngle: Double, stateStack: List[Sta
   }
 
   def move(distance: Double): Turtle = {
-    val xDelta = sin(heading) * distance
-    val yDelta = cos(heading) * distance
+    val xDelta = sin(deg2Rad(heading)) * distance
+    val yDelta = cos(deg2Rad(heading)) * distance
 
     val x2 = x + xDelta
     val y2 = y + yDelta
@@ -51,8 +50,7 @@ class Turtle(xVal: Double, yVal: Double, headAngle: Double, stateStack: List[Sta
   }
 
   def turn(angle: Double): Turtle = {
-    val rads = deg2Rad(angle) + heading
-    new Turtle(x, y, rads, stack, pa)
+    new Turtle(x, y, angle + heading, stack, pa)
   }
 
   def pushPos(): Turtle = {

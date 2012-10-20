@@ -55,8 +55,7 @@ class TurtleSpec extends Specification {
     "update the heading of the new Turtle instance" in {
       val t = createNewTurtle()
       val newT = t.turn(10.0)
-      val newHeading = t.deg2Rad(10.0)
-      newT.heading must_== newHeading
+      newT.heading must_== 10.0
     }
 
 
@@ -72,8 +71,7 @@ class TurtleSpec extends Specification {
                   .pushPos()
                   .move(10.0).turn(10.0).move(10.0)
                   .popPos()
-      val newHeading = t.deg2Rad(10.0)
-      newT.heading must_== newHeading
+      newT.heading must_== 10.0
     }
     "return a new Turtle in the same position when the stack is popped without pushing" in {
       val t = createNewTurtle()
