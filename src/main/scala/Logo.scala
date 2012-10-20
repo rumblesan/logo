@@ -17,14 +17,14 @@ class Logo extends PApplet {
 
   var ls: LSystem = _
 
-  val dc = new DragonCurve(10.0)
+  val st = new SierpinskiTriangle(5.0)
 
   override def setup {
     size(1024, 768)
     smooth()
     frameRate(30)
 
-    ls = new LSystem("FX".toList, DragonCurve.rules)
+    ls = new LSystem("A".toList, SierpinskiTriangle.rules)
 
   }
 
@@ -33,9 +33,9 @@ class Logo extends PApplet {
     background(0)
     stroke(255)
 
-    val turtle = new Turtle(width * 0.75, height * 0.75, 0.0, this)
+    val turtle = new Turtle(width * 0.15, height * 0.85, 90.0, this)
 
-    dc.parse(ls, turtle)
+    st.parse(ls, turtle)
 
   }
 
