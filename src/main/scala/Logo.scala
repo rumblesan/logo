@@ -51,9 +51,11 @@ class Logo extends PApplet {
 
   }
 
-  override def mouseClicked() {
-    ls = ls.nextGeneration()
-    println(ls.chars)
+  override def keyPressed() {
+    key match {
+      case VK_SPACE => ls = ls.nextGeneration()
+      case _ => {}
+    }
   }
 
 }
