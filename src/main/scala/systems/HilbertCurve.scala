@@ -29,8 +29,8 @@ class HilbertCurve(distance: Double) {
       (turtle, char) => {
         char match {
           case 'F' => turtle.move(dist)
-          case '-' => turtle.turn(-HilbertCurve.angle)
-          case '+' => turtle.turn(HilbertCurve.angle)
+          case '-' => turtle.yaw(-HilbertCurve.angle)
+          case '+' => turtle.yaw(HilbertCurve.angle)
           case _ => turtle
         }
       }

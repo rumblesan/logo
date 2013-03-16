@@ -29,8 +29,8 @@ class DragonCurve(distance: Double) {
       (turtle, char) => {
         char match {
           case 'F' => turtle.move(dist)
-          case '-' => turtle.turn(-DragonCurve.angle)
-          case '+' => turtle.turn(DragonCurve.angle)
+          case '-' => turtle.yaw(-DragonCurve.angle)
+          case '+' => turtle.yaw(DragonCurve.angle)
           case _ => turtle
         }
       }

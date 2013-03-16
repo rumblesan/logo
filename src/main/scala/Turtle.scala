@@ -10,26 +10,28 @@ object Turtle {
 
 }
 
-case class StackInfo(x: Double, y: Double, heading: Double)
+case class StackInfo(x: Double, y: Double, z: Double, pitch: Double, yaw: Double)
 
-class Turtle(xVal: Double, yVal: Double, headAngle: Double, stateStack: List[StackInfo], pApplet: PApplet) {
+class Turtle(xVal: Double, yVal: Double, zVal: Double, pi: Double, ya: Double, stateStack: List[StackInfo], pApplet: PApplet) {
 
   import Turtle._
 
-  def this(xVal: Double, yVal: Double, headAngle: Double, pApplet: PApplet) = {
-    this(xVal, yVal, headAngle, Nil, pApplet)
+  def this(xVal: Double, yVal: Double, zVal: Double, pi: Double, ya: Double, pApplet: PApplet) = {
+    this(xVal, yVal, zVal, pi, ya, Nil, pApplet)
   }
 
-  def this(xVal: Double, yVal: Double, pApplet: PApplet) = {
-    this(xVal, yVal, 0.0, Nil, pApplet)
+  def this(xVal: Double, yVal: Double, zVal: Double, pApplet: PApplet) = {
+    this(xVal, yVal, zVal, 0.0, 0.0, Nil, pApplet)
   }
 
   val x = xVal
   val y = yVal
+  val z = zVal
 
   val stack = stateStack
 
-  val heading = headAngle
+  val pitch = pi
+  val yaw = ya
 
   val pa = pApplet
 
@@ -38,33 +40,41 @@ class Turtle(xVal: Double, yVal: Double, headAngle: Double, stateStack: List[Sta
   }
 
   def move(distance: Double): Turtle = {
-    val xDelta = sin(deg2Rad(heading)) * distance
-    val yDelta = cos(deg2Rad(heading)) * distance
+    val zDelta = sin(deg2Rad(pitch)) * distance
+    val inter = cos(deg2Rad(pitch)) * distance
+ 
+    val xDelta = sin(deg2Rad(yaw)) * inter
+    val yDelta = cos(deg2Rad(yaw)) * inter
 
     val x2 = x + xDelta
     val y2 = y + yDelta
+    val z2 = z + zDelta
 
-    pa.line(x, y, x2, y2)
+    pa.line(x, y, z, x2, y2, z2)
 
-    new Turtle(x2, y2, heading, stack, pa)
+    new Turtle(x2, y2, z2, pitch, yaw, stack, pa)
   }
 
-  def turn(angle: Double): Turtle = {
-    new Turtle(x, y, angle + heading, stack, pa)
+  def pitch(angle: Double): Turtle = {
+    new Turtle(x, y, z, pitch + angle, yaw, stack, pa)
+  }
+
+  def yaw(angle: Double): Turtle = {
+    new Turtle(x, y, z, pitch, yaw + angle, stack, pa)
   }
 
   def pushPos(): Turtle = {
-    val newStack = StackInfo(x, y, heading) :: stack
-    new Turtle(x, y, heading, newStack, pa)
+    val newStack = StackInfo(x, y, z, pitch, yaw) :: stack
+    new Turtle(x, y, z, pitch, yaw, newStack, pa)
   }
 
   def popPos(): Turtle = {
     if (stack.isEmpty) {
-      new Turtle(x, y, heading, pa)
+      new Turtle(x, y, z, pitch, yaw, pa)
     } else {
       val newStack = stack.tail
       val newPos = stack.head
-      new Turtle(newPos.x, newPos.y, newPos.heading, newStack, pa)
+      new Turtle(newPos.x, newPos.y, newPos.z, newPos.pitch, newPos.yaw, newStack, pa)
     }
   }
 

@@ -30,8 +30,8 @@ class SierpinskiTriangle(distance: Double) {
         char match {
           case 'A' => turtle.move(dist)
           case 'B' => turtle.move(dist)
-          case '+' => turtle.turn(-SierpinskiTriangle.angle)
-          case '-' => turtle.turn(SierpinskiTriangle.angle)
+          case '+' => turtle.yaw(-SierpinskiTriangle.angle)
+          case '-' => turtle.yaw(SierpinskiTriangle.angle)
           case _ => turtle
         }
       }

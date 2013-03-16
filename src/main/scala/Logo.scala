@@ -19,10 +19,10 @@ class Logo extends PApplet {
 
   val lineSize = 5.0
 
-  val system = HilbertCurve
+  val system = FractalPlant
 
   override def setup {
-    size(1024, 768)
+    size(1024, 768, P3D)
     smooth()
     frameRate(30)
 
@@ -35,7 +35,7 @@ class Logo extends PApplet {
     background(0)
     stroke(255)
 
-    val turtle = new Turtle(width * 0.05, height * 0.85, system.startAngle, this)
+    val turtle = new Turtle(width * 0.05, height * 0.85, 0.0, 0.0, system.startAngle, this)
 
     system(lineSize).parse(ls, turtle)
 

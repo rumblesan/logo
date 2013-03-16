@@ -29,8 +29,8 @@ class FractalPlant(distance: Double) {
       (turtle, char) => {
         char match {
           case 'F' => turtle.move(dist)
-          case '-' => turtle.turn(-FractalPlant.angle)
-          case '+' => turtle.turn(FractalPlant.angle)
+          case '-' => turtle.yaw(-FractalPlant.angle)
+          case '+' => turtle.yaw(FractalPlant.angle)
           case '[' => turtle.pushPos()
           case ']' => turtle.popPos()
           case _ => turtle
