@@ -4,7 +4,7 @@ import com.rumblesan.logo.turtle._
 
 object HilbertCurve3D {
 
-  val rules  = new LSystemRules().addSub('X', "^XFX+F+XFvXFvXF+XF+XF^X")
+  val rules  = new LSystemRules().addSub('X', "^XF+XF+XFvXFvXF+XF+XF^XF")
 
   val startAngle = 180.0
 
