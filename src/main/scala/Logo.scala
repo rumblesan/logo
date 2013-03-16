@@ -2,8 +2,13 @@ import processing.core._
 import spde.core._
 import PConstants._
 
+import java.awt.event.KeyEvent._
+
 import com.rumblesan.logo.turtle._
 import com.rumblesan.lsystem._
+
+import peasy._
+
 
 object Main {
   def main(args: Array[String]) = {
@@ -15,11 +20,15 @@ object Main {
 
 class Logo extends PApplet {
 
+  implicit def double2Float(v: Double) = v.toFloat
+
   var ls: LSystem = _
 
-  val lineSize = 5.0
+  val lineSize = 20.0
 
-  val system = FractalPlant
+  var cam: PeasyCam = _
+
+  val system = HilbertCurve3D
 
   override def setup {
     size(1024, 768, P3D)
@@ -28,6 +37,7 @@ class Logo extends PApplet {
 
     ls = new LSystem(system.seed, system.rules)
 
+    cam = new PeasyCam(this, 0, 0, 0, 50)
   }
 
   override def draw {
