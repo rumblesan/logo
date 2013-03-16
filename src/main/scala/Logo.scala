@@ -19,7 +19,7 @@ class Logo extends PApplet {
 
   val lineSize = 5.0
 
-  val system = FractalPlant
+  val system = HilbertCurve
 
   override def setup {
     size(1024, 768)
