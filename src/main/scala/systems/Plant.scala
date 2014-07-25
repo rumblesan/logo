@@ -4,8 +4,7 @@ import com.rumblesan.logo.turtle._
 
 object FractalPlant {
 
-  val rules  = new LSystemRules().addSub('X', "F-[[X]+X]+F[+FX]-X")
-                                 .addSub('F', "FF")
+  val rules  = LSystemRules(('X', "F-[[X]+X]+F[+FX]-X"), ('F', "FF"))
 
   val startAngle = 110.0
 

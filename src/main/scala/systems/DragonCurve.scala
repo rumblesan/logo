@@ -4,8 +4,7 @@ import com.rumblesan.logo.turtle._
 
 object DragonCurve {
 
-  val rules  = new LSystemRules().addSub('X', "X+YF")
-                                 .addSub('Y', "FX-Y")
+  val rules  = LSystemRules(('X', "X+YF"), ('Y', "FX-Y"))
 
   val startAngle = 0
 
