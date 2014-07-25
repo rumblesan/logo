@@ -10,30 +10,30 @@ class TurtleSpec extends Specification {
 
   def createNewTurtle(): Turtle = {
     val pa = mock(classOf[PApplet])
-    new Turtle(0.0, 0.0, pa)
+    Turtle(0.0, 0.0, 0.0, Nil, pa)
   }
 
   "The Turtle class" should {
 
     "be created ok with full constructor" in {
       val pa = mock(classOf[PApplet])
-      val t = new Turtle(0.0, 0.0, 0.0, Nil, pa)
+      val t = Turtle(0.0, 0.0, 0.0, Nil, pa)
       t must haveClass[Turtle]
     }
     "be created ok with no stack constructor" in {
       val pa = mock(classOf[PApplet])
-      val t = new Turtle(0.0, 0.0, 0.0, pa)
+      val t = Turtle(0.0, 0.0, 0.0, Nil, pa)
       t must haveClass[Turtle]
     }
     "be created ok with no headAngle or stack constructor" in {
       val pa = mock(classOf[PApplet])
-      val t = new Turtle(0.0, 0.0, pa)
+      val t = Turtle(0.0, 0.0, 0.0, Nil, pa)
       t must haveClass[Turtle]
     }
 
     "convert degrees to radians correctly" in {
       val t = createNewTurtle()
-      t.deg2Rad(90.0) must_== (Pi/2)
+      Turtle.deg2Rad(90.0) must_== (Pi/2)
     }
 
     "return a new Turtle instance when it's moved" in {

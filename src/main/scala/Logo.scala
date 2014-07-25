@@ -3,6 +3,7 @@ import PConstants._
 
 import com.rumblesan.logo.turtle._
 import com.rumblesan.lsystem._
+import com.rumblesan.logo.turtle.Turtle.double2Float
 
 object Main {
   def main(args: Array[String]) = {
@@ -34,7 +35,7 @@ class Logo extends PApplet {
     background(0)
     stroke(255)
 
-    val turtle = new Turtle(width * 0.05, height * 0.85, system.startAngle, this)
+    val turtle = Turtle(width * 0.05, height * 0.85, system.startAngle, Nil, this)
 
     system(lineSize).parse(ls, turtle)
 
