@@ -1,5 +1,4 @@
 import processing.core._
-import spde.core._
 import PConstants._
 
 import com.rumblesan.logo.turtle._
