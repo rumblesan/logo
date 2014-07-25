@@ -5,7 +5,7 @@ case class LSystemRules(rules: Map[Char, String])
 
 object LSystemRules {
 
-  def apply(r: Pair[Char, String]*): LSystemRules = {
+  def apply(r: (Char, String)*): LSystemRules = {
     LSystemRules(
       r.foldLeft(Map.empty[Char, String])((m, r) => m + r)
     )
