@@ -1,25 +1,32 @@
 package com.rumblesan.lsystem
 
 
-class LSystem(seed: String, lRules: LSystemRules) {
+case class LSystem(chars: String, rules: LSystemRules)
 
-  val chars = seed
+object LSystem {
 
-  val rules = lRules
+  implicit def ToLSystemOps(l: LSystem): LSystemOps =
+    new LSystemOps {
+      def self = l
+    }
 
   def processChars(chars: String, rules: LSystemRules): String = {
-
     chars.toList.foldLeft("")(
       (output, char) => {
         output + rules(char)
       }
     )
-
   }
 
+}
+
+
+trait LSystemOps {
+
+  def self: LSystem
+
   def nextGeneration(): LSystem = {
-    val nextChars = processChars(chars, rules)
-    new LSystem(nextChars, rules)
+    self.copy(chars = LSystem.processChars(self.chars, self.rules))
   }
 
 }
