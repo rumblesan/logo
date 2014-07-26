@@ -1,17 +1,11 @@
+package com.rumblesan.logo
+
 import processing.core._
 import PConstants._
 
 import com.rumblesan.logo.turtle._
 import com.rumblesan.lsystem._
 import com.rumblesan.logo.turtle.Turtle.double2Float
-
-object Main {
-  def main(args: Array[String]) = {
-    PApplet.main(
-      Array("Logo")
-    )
-  }
-}
 
 class Logo extends PApplet {
 
