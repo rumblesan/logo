@@ -9,7 +9,7 @@ import com.rumblesan.logo.turtle.Turtle.double2Float
 
 class Logo extends PApplet {
 
-  lazy val system = HilbertCurve
+  lazy val system = FractalPlant
 
   // Needs to be a var because it gets changed on each
   // mouse click
