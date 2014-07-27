@@ -9,15 +9,15 @@ import com.rumblesan.logo.turtle.Turtle.double2Float
 
 class Logo extends PApplet {
 
-  val system = HilbertCurve
+  lazy val system = HilbertCurve
 
   // Needs to be a var because it gets changed on each
   // mouse click
   var ls: LSystem = LSystem(system.seed, system.rules)
 
-  val lineSize = 5.0
+  lazy val lineSize = 5.0
 
-  val turtle = Turtle(
+  lazy val turtle = Turtle(
     width * 0.05,
     height * 0.85,
     system.startAngle,
