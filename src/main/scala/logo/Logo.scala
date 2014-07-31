@@ -9,17 +9,17 @@ import com.rumblesan.logo.turtle.Turtle.double2Float
 
 class Logo extends PApplet {
 
-  lazy val system = FractalPlant
+  lazy val system = PenroseRhombus
 
   // Needs to be a var because it gets changed on each
   // mouse click
   var ls: LSystem = LSystem(system.seed, system.rules)
 
-  lazy val lineSize = 5.0
+  lazy val lineSize = 50.0
 
   lazy val turtle = Turtle(
-    width * 0.05,
-    height * 0.85,
+    width * 0.5,
+    height * 0.5,
     system.startAngle,
     Nil,
     this
